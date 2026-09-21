@@ -1,0 +1,85 @@
+% ============================================================
+% EJEMPLO - LaTeX: documento con formato profesional
+% ============================================================
+%
+% Que es:
+%   LaTeX NO es un lenguaje de programacion: es un sistema para
+%   escribir documentos. Tu escribes texto + ordenes (comandos),
+%   y el produce un PDF con calidad de imprenta.
+%
+% Como se prueba (NO necesitas instalar nada):
+%   - Entra a https://overleaf.com (gratis), crea un proyecto nuevo
+%     y pega todo este archivo.
+%   - O instala MiKTeX (https://miktex.org) y compila con:
+%         pdflatex 09_latex/01_documento.tex
+%
+% Fijate en: las formulas matematicas se escriben entre $...$
+%   y las secciones con \section{...}. LaTeX numera solo.
+% ============================================================
+
+\documentclass[11pt, a4paper]{article}
+
+% Paquetes: herramientas extra (idioma, formulas, tablas, etc.)
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}      % formulas matematicas
+\usepackage{booktabs}     % tablas bonitas
+
+\title{Informe de ejemplo en LaTeX}
+\author{Tu nombre aqui}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Este es un documento minimo de ejemplo. Muestra lo basico de LaTeX:
+secciones, formulas, tablas y listas. El PDF final sale con formato
+profesional, sin apretar botones de formato.
+\end{abstract}
+
+\section{Introduccion}
+
+En LaTeX, el texto se escribe normal. Para destacar algo se usa
+\textbf{negrita} o \textit{cursiva}. Las secciones se numeran solas:
+esto es la seccion 1, y las subsecciones serian 1.1, 1.2, etc.
+
+\section{Formulas}
+
+Las formulas se escriben entre signos de dolar. Por ejemplo, el promedio:
+\begin{equation}
+    \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+\end{equation}
+
+No hay que hacer nada para numerarla: LaTeX la numera automaticamente.
+
+\section{Tabla}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{lcc}
+        \toprule
+        Sitio    & Muestras & Peso promedio (g) \\
+        \midrule
+        Sitio A  & 10       & 11.72 \\
+        Sitio B  & 10       & 15.06 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Resumen de las mediciones.}
+    \label{tab:resumen}
+\end{table}
+
+La Tabla~\ref{tab:resumen} se referencia sola con su numero.
+
+\section{Conclusion}
+
+LaTeX es muy usado en tesis y articulos cientificos porque:
+\begin{itemize}
+    \item Numera solo las secciones, figuras, tablas y formulas.
+    \item Maneja las referencias y la bibliografia automaticamente.
+    \item Produce un PDF con acabado profesional.
+\end{itemize}
+
+\end{document}

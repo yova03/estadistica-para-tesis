@@ -1,0 +1,13 @@
+# Normaliza los finales de linea: LF dentro del repositorio, el que use
+# el sistema de cada persona en su copia de trabajo. Asi el mismo archivo
+# se ve igual en Windows, macOS y Linux.
+* text=auto
+
+# Archivos que nunca deben tratarse como texto
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.xlsx binary
+*.docx binary

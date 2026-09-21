@@ -1,0 +1,75 @@
+<!-- ============================================================
+     EJEMPLO - QUARTO: el documento que se actualiza solo
+     ============================================================
+
+     Que es:
+       Quarto es la herramienta para escribir informes/tesis donde
+       el texto y el codigo van JUNTOS. Escribes prosa normal
+       (Markdown) y pegas trozos de codigo (de Python, R, Julia...).
+       Al "renderizar", Quarto ejecuta el codigo y arma el documento.
+
+     Como se prueba:
+       1. Instala Quarto (gratis): https://quarto.org/docs/get-started/
+       2. Desde la carpeta 02_EJEMPLOS_LENGUAJES_2026 ejecuta:
+              quarto render 10_quarto/01_informe.qmd
+       3. Se genera 01_informe.html (abrelo en el navegador).
+       4. Tambien puedes pedir Word o PDF cambiando "format:" abajo.
+          (Para PDF, Quarto usa LaTeX por dentro, sin que lo veas.)
+
+     Fijate en: los numeros y el grafico de abajo NO estan escritos
+     a mano: salen de ejecutar el codigo sobre datos/mediciones.csv.
+     Si cambias los datos, vuelves a renderizar y todo se actualiza.
+     ============================================================ -->
+
+---
+title: "Informe de ejemplo con Quarto"
+author: "Tu nombre"
+date: today
+format: html
+lang: es
+---
+
+## Introduccion
+
+Este informe se genera solo. Abajo hay dos *bloques de codigo*:
+el primero muestra la tabla de promedios y el segundo dibuja el grafico.
+
+## Resultados
+
+```{python}
+#| label: tbl-promedios
+#| tbl-cap: "Peso promedio por sitio"
+
+import pandas as pd
+
+datos = pd.read_csv("../datos/mediciones.csv")
+resumen = datos.groupby("sitio")["peso_g"].agg(["count", "mean", "std"]).round(2)
+resumen.columns = ["Muestras", "Promedio (g)", "Desviacion (g)"]
+resumen
+```
+
+```{python}
+#| label: fig-peso
+#| fig-cap: "Peso promedio por sitio, con barras de error."
+
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(5, 3.5))
+ax.bar(resumen.index, resumen["Promedio (g)"],
+       yerr=resumen["Desviacion (g)"], capsize=6,
+       color=["#4c72b0", "#dd8452"], edgecolor="black")
+ax.set_xlabel("Sitio")
+ax.set_ylabel("Peso (g)")
+ax.grid(axis="y", linestyle="--", alpha=0.4)
+plt.show()
+```
+
+## Conclusion
+
+La tabla y la figura de arriba se generaron ejecutando Python dentro de
+este documento. En una tesis real, aqui iria tu interpretacion de los
+resultados.
+
+> **Para probar**: cambia un numero en `../datos/mediciones.csv`,
+> vuelve a ejecutar `quarto render 10_quarto/01_informe.qmd`
+> y mira como el informe se actualiza solo.

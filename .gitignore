@@ -1,0 +1,33 @@
+# Resultados que genera el propio programa (opcion 8 del menu)
+resultados_estadistica.txt
+*.txt.bak
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~
+
+# Sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Salidas de LaTeX y Quarto que se regeneran al compilar
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+10_quarto/*_files/
+10_quarto/*.html
+10_quarto/*.docx
