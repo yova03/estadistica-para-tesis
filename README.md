@@ -209,5 +209,10 @@ los valores críticos y valores p.
 
 ## Licencia
 
-MIT. Puedes usarlo, copiarlo y adaptarlo libremente, incluso en trabajos de
-investigación y publicaciones. Ver [`LICENSE`](./LICENSE).
+MIT. En palabras simples: puedes usar, copiar, modificar y compartir este
+programa libremente, incluso con fines comerciales y en trabajos de
+investigación y publicaciones. La única condición es mantener el aviso de
+autoría. El programa se entrega sin garantía.
+
+El texto legal completo está en [`LICENSE`](./LICENSE) (en inglés, que es la
+versión que rige).
