@@ -1,6 +1,7 @@
-# Resultados que genera el propio programa (opcion 8 del menu)
+# Resultados que generan los propios programas (opcion 8 del menu, y el scraper)
 resultados_estadistica.txt
-*.txt.bak
+arqueologia_*.csv
+arqueologia_*.json
 
 # Python
 __pycache__/

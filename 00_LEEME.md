@@ -7,16 +7,30 @@ uso: "Leer como punto de entrada: resumen, pregunta, corpus, método, resultados
 
 ## Resumen
 
-El repositorio tiene dos partes.
+El repositorio tiene tres partes.
 
-**Primera: un programa para usar.** `estadistica_tesis.py` resuelve las cuentas que más se piden en un informe de tesis (tamaño de muestra, descriptivos, prueba t, ANOVA, correlación y alfa de Cronbach). Funciona solo con Python, sin instalar librerías, y también analiza el archivo CSV del propio tesista. Detalle en el [README](./README.md).
+**Primera: un scraper de repositorios arqueológicos.** `scraper_arqueologia.py` busca en Zenodo, ARIADNE, Harvard Dataverse y OSF a la vez, y devuelve una tabla CSV con título, autores, año, DOI y enlace de cada hallazgo. Traduce la consulta al inglés solo, porque los catálogos de arqueología son casi enteros en inglés, y corrige el OR de Dataverse y OSF. Detalle en el [README](./README.md).
 
-**Segunda: once colecciones de ejemplos.** Resuelven **la misma tarea** (leer `datos/mediciones.csv`, promediar por grupo, aplicar una prueba t y graficar) en distintos lenguajes y herramientas:
+**Segunda: un programa de estadística.** `estadistica_tesis.py` resuelve las cuentas que más se piden en un informe de tesis (tamaño de muestra, descriptivos, prueba t, ANOVA, correlación y alfa de Cronbach). Funciona solo con Python, sin instalar librerías, y también analiza el archivo CSV del propio tesista.
+
+**Tercera: once colecciones de ejemplos.** Resuelven **la misma tarea** (leer `datos/mediciones.csv`, promediar por grupo, aplicar una prueba t y graficar) en distintos lenguajes y herramientas:
 
 - **Lenguajes de programación:** Python (4 ejemplos), R (2), Julia, MATLAB, Fortran, C++, SQL y JavaScript.
 - **Herramientas de documentos:** LaTeX, Quarto y Jupyter (no son lenguajes de programación: sirven para redactar y publicar).
 
-Todos los archivos están comentados en español y declaran cómo ejecutarse. La verificación se hizo el 18 de septiembre de 2026; el programa de estadística se verificó el 21 de septiembre de 2026.
+Todos los archivos están comentados en español y declaran cómo ejecutarse. La verificación se hizo el 18 de septiembre de 2026; los dos programas se verificaron el 21 de septiembre de 2026.
+
+## El scraper de repositorios
+
+| Elemento | Detalle |
+|---|---|
+| Archivo | `scraper_arqueologia.py` (un solo archivo) |
+| Dependencias | Ninguna: solo Python 3.8 o mayor, y conexión a internet |
+| Repositorios | Zenodo, ARIADNE, Harvard Dataverse y OSF, todos sin clave |
+| Traducción | Glosario propio de arqueología andina, unos 150 términos |
+| Entrada | Una consulta por línea de comandos o modo interactivo |
+| Salida | Un CSV que Excel abre directamente, y el JSON crudo si se pide |
+| No consulta | tDAR, ADS y Open Context: bloquean el acceso automático; su contenido llega por ARIADNE |
 
 ## El programa de estadística
 
@@ -67,6 +81,13 @@ Todos los archivos están comentados en español y declaran cómo ejecutarse. La
 | `11_jupyter/` | Cuaderno con cuatro celdas | Preparado; falta instalar Jupyter |
 
 ## Cómo probar los ejemplos disponibles
+
+El scraper, desde esta carpeta:
+
+```
+python scraper_arqueologia.py "arqueologia Peru" --maximo 50
+python scraper_arqueologia.py --ayuda
+```
 
 El programa de estadística, desde esta carpeta:
 
